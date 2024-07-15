@@ -1,16 +1,26 @@
-// src/App.js
-import React, { useState } from 'react';
-import MyContext from './MyContext'; // 确保路径正确
-import ChildComponent from './ChildComponent';
+import React from 'react';
+import './App.css';
+import Header from './components/Header';
+import Balance from './components/Balance';
+import IncomeExpense from './components/IncomeExpense';
+import TransactionList from './components/TransactionList';
+import AddTransaction from './components/AddTransaction';
 
-const App = () => {
-  const [state, setState] = useState('Hello, World!');
+import { GlobalProvider } from './context/GlobalState';
 
-  return (
-    <MyContext.Provider value={{ state, setState }}>
-      <ChildComponent />
-    </MyContext.Provider>
-  );
-};
+
+function App(){
+  return(
+    <GlobalProvider>
+      <Header />
+      <div className='container'>
+        <Balance />
+        <IncomeExpense />
+        <TransactionList />
+        <AddTransaction />
+      </div>
+    </GlobalProvider>
+  )
+}
 
 export default App;
